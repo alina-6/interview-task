@@ -17,25 +17,6 @@ print(df.describe()) # summary of numerical columns
 print(df.nunique()) # unique values in each column
 
 
-# Get the top 5 episodes based on views
-top_episodes = df.nlargest(5, "views")
-
-# Wrap episode names to fit on the y-axis
-top_episodes["wrapped_name"] = top_episodes["episode_name"].apply(lambda x: "\n".join(textwrap.wrap(x, width=20)))
-
-# Create the bar plot
-plt.figure(figsize=(18, 6))  # Make the figure wider
-ax = sns.barplot(data=top_episodes, x="views", y="wrapped_name", palette="Greens_r")
-
-# Labeling the chart
-plt.xlabel("Views")
-plt.ylabel("Episode Name")
-plt.title("Top 5 Most Viewed Episodes")
-
-# Display the plot
-plt.show()
-
-
 bottom_episodes = df.nsmallest(5, "views")
 bottom_episodes["wrapped_name"] = bottom_episodes["episode_name"].apply(lambda x: "\n".join(textwrap.wrap(x, width=20)))
 
