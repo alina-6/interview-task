@@ -1,32 +1,53 @@
-How to Run the project:
 
-for the backend:
-cd backend
-pip install -r requirements.txt
-python app.py
+# How to Run the Project
 
-for the frontend:
-cd frontend
-npm install
-npm run dev
+## Backend
+1. Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. Run the application:
+    ```bash
+    python app.py
+    ```
 
-running on:
-http://localhost:5173/
+## Frontend
+1. Navigate to the frontend directory:
+    ```bash
+    cd frontend
+    ```
+2. Install the required dependencies:
+    ```bash
+    npm install
+    ```
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
 
-Technologies used:
+## Running on:
+`http://localhost:5173/`
 
-Backend
-Flask: For building the RESTful API.
-Pandas: For data manipulation and analysis.
-Matplotlib: For generating charts and visualizations.
+---
 
+## Technologies Used
 
-Frontend
-React: For building the user interface.
-Vite: For fast development and build tooling.
-ESLint: For maintaining code quality and consistency.
+### Backend
+- **Flask**: For building the RESTful API.
+- **Pandas**: For data manipulation and analysis.
+- **Matplotlib**: For generating charts and visualizations.
 
-Assumptions & Decisions:
+### Frontend
+- **React**: For building the user interface.
+- **Vite**: For fast development and build tooling.
+- **ESLint**: For maintaining code quality and consistency.
 
-- Missing values in the episode_description column are filled with "no description".
+---
+
+## Assumptions & Decisions
+- Missing values in the `episode_description` column are filled with `"no description"`.
 - Views are aggregated by month for trend analysis.
