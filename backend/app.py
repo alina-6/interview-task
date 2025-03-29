@@ -78,20 +78,12 @@ def get_analysis_chart():
     df["year"] = df["release_date"].dt.year
     df["month"] = df["release_date"].dt.month
 
-    # Calculate net subscribers (subscribers gained - subscribers lost)
-    df["netSubscribers"] = df["subscribersGained"] - df["subscribersLost"]
-    df["engagement_rate"] = (
-        (df["likes"] + df["comments"] + df["shares"]) / df["views"] * 100
-    )
-
-    # Group the data by year and month to get total subscribers gained, lost, and net subscribers for each month of each year
+    # Aggregate subscribers gained by year and month
     monthly_yearly_data = (
         df.groupby(["year", "month"])
         .agg(
             {
                 "subscribersGained": "sum",
-                "netSubscribers": "sum",
-                "engagement_rate": "mean",
             }
         )
         .reset_index()
