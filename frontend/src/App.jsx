@@ -1,6 +1,7 @@
 import "./App.css";
 import EpisodePerformance from "./Components/EpisodePerformance";
 import EpisodeSearch from "./Components/EpisodeSearch";
+import Analysis from "./Components/Analysis";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           style={{ width: "100%", borderRadius: "8px" }}
         />
       </div>
+
+      <Analysis />
     </>
   );
 }
