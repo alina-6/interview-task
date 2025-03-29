@@ -43,7 +43,6 @@
 
 ### Frontend
 - **React**: For building the user interface.
-- **Vite**: For fast development and build tooling.
 - **ESLint**: For maintaining code quality and consistency.
 
 ---
