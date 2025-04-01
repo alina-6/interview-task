@@ -1,40 +1,38 @@
 const API_URL = "http://127.0.0.1:5000";
 
-export const fetchEpisodeSearch = async () => {
+// Utility function to handle fetch requests
+const fetchWithErrorHandling = async (url, errorMessage) => {
   try {
-    const response = await fetch(`${API_URL}/episode_search`);
+    const response = await fetch(url);
     if (!response.ok) {
-      throw new Error("Failed to fetch summary data");
+      throw new Error(`${errorMessage}: ${response.status} ${response.statusText}`);
     }
     return await response.json();
   } catch (error) {
-    console.error("Error fetching summary:", error);
-    return null;
+    if (process.env.NODE_ENV !== "production") {
+      console.error(error.message);
+    }
+    return null; // Return null to indicate failure
   }
+};
+
+export const fetchEpisodeSearch = async () => {
+  return await fetchWithErrorHandling(
+    `${API_URL}/episode_search`,
+    "Error fetching episode search data"
+  );
 };
 
 export const fetchTopEpisodes = async (metric = "views") => {
-  try {
-    const response = await fetch(`${API_URL}/top_episodes?metric=${metric}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch top episodes data");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching top episodes:", error);
-    return null;
-  }
+  return await fetchWithErrorHandling(
+    `${API_URL}/top_episodes?metric=${metric}`,
+    "Error fetching top episodes data"
+  );
 };
 
 export const fetchBottomEpisodes = async (metric = "views") => {
-  try {
-    const response = await fetch(`${API_URL}/bottom_episodes?metric=${metric}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch bottom episodes data");
-    }
-    return await response.json();
-  } catch (error) {
-    console.error("Error fetching bottom episodes:", error);
-    return null;
-  }
+  return await fetchWithErrorHandling(
+    `${API_URL}/bottom_episodes?metric=${metric}`,
+    "Error fetching bottom episodes data"
+  );
 };
